@@ -1,0 +1,9 @@
+
+# Additional information about this file can be found at
+# https://dart.dev/guides/language/analysis-options
+linter:
+  rules:
+    - close_sinks
+    - annotate_overrides
+    - hash_and_equals
+    - prefer_is_not_empty
