@@ -21,7 +21,7 @@ class Example2 with StreamListenable {
     controller.stream.listen((event) {
       print(event);
       controller.close();
-    }).canceledBy(self);
+    }).canceledBy(this);
   }
 }
 

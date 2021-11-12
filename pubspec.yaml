@@ -1,6 +1,6 @@
 name: disposer
 description: Disposable package
-version: 0.0.1
+version: 0.0.2
 homepage: null
 repository: https://github.com/damienissa/disposer
 
@@ -16,8 +16,8 @@ dependencies:
     sdk: flutter
 
 dev_dependencies:
+  args: ^2.3.0  
   flutter_lints: ^1.0.0
-  args: any
   flutter_test:
     sdk: flutter
 
