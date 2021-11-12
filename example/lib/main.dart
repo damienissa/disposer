@@ -1,4 +1,3 @@
-import 'package:example/features/template/template_module.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -95,8 +94,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (c) => TemplateModule.build()));
+          // Navigator.of(context)
+          //     .push(MaterialPageRoute(builder: (c) => ExampleModule.build()));
         },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
