@@ -1,5 +1,5 @@
 import 'data/datasources/template_data_source.dart';
-import 'data/repositories/template_repository.dart';
+import 'data/repositories/template_data_repository.dart';
 import 'domain/repositories/template_domain_repository.dart';
 import 'domain/usecases/template_usecase.dart';
 import 'presentation/pages/template_page.dart';

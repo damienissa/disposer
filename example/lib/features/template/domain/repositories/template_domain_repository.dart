@@ -1,5 +1,5 @@
 import 'package:disposer/disposer.dart';
-import '../../data/repositories/template_repository.dart';
+import '../../data/repositories/template_data_repository.dart';
 import '../entities/template_entitie.dart';
 
 class TemplateDomainRepository with Disposable {
