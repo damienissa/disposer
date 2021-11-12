@@ -2,6 +2,7 @@ name: disposer
 description: Disposable package
 version: 0.0.1
 homepage: null
+repository: https://github.com/damienissa/disposer
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
