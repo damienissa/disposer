@@ -1,4 +1,7 @@
-## 0.0.3
+## 0.0.4
+* Updated README.md
+
+## 0.0.3 
 
 * Updated feature builder. 
     Now you can use this naping types:
