@@ -1,6 +1,6 @@
 name: disposer
-description: Disposable package
-version: 0.0.2
+description: Pagacke that helps to generate feature module with `Disposable`
+version: 0.0.3
 homepage: null
 repository: https://github.com/damienissa/disposer
 

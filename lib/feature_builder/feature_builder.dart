@@ -17,7 +17,7 @@ import 'src/template_module.dart';
 /// Future builder main component
 abstract class FeatureBuilder {
   /// Build method with *[moduleName]* parameter
-  static void build({required String moduleName}) {
+  static void build({required String moduleName, String? rootPath}) {
     final dataMap = {
       datasourceTemplate: datasourceTemplateFile,
       dataModelTemplate: dataModelTemplateFile,
@@ -29,8 +29,8 @@ abstract class FeatureBuilder {
       presentationViewModelTemplate: presentationViewModelTemplateFile,
       presentationWidgetTemplate: presentationWidgetTemplateFile,
       moduleTemplate: moduleTemplateFile,
-    }.map((key, value) =>
-        MapEntry(key.pathWith(moduleName), value.dataWith(moduleName)));
+    }.map((key, value) => MapEntry(key.pathWith(moduleName, rootPath: rootPath),
+        value.dataWith(moduleName)));
     dataMap.forEach((key, value) => File(key)
       ..createSync(recursive: true)
       ..writeAsStringSync(value));
