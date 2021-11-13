@@ -5,7 +5,7 @@ import 'package:disposer/disposer.dart';
 
 class ExampleDataSource with Disposable {
   ExampleDataSource() {
-    _timer = Timer.periodic(const Duration(milliseconds: 1), (timer) {
+    _timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
       log(timer.tick.toString());
       _streamController.sink.add(timer.tick);
     });

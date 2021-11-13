@@ -1,29 +1,75 @@
+import 'dart:async';
+
+import 'package:disposer/disposer.dart';
+import 'package:example/features/app.dart';
 import 'package:flutter/material.dart';
 
-import 'features/example/data/datasources/example_data_source.dart';
-import 'features/example/data/repositories/example_data_repository.dart';
-import 'features/example/domain/repositories/example_domain_repository.dart';
-import 'features/example/domain/usecases/example_usecase.dart';
-import 'features/example/presentation/pages/example_page.dart';
-import 'features/example/presentation/view_models/example_view_model.dart';
-
 void main() {
-  runApp(ExampleModule.build());
+  final LocalDataSource localDataSource = LocalDataSource();
+  final RemoteDataSource remoteDataSource = RemoteDataSource();
+  final DataRepository dataRepository = DataRepository(
+    localDataSource: localDataSource,
+    remoteDataSource: remoteDataSource,
+  );
+  final DataUsecase dataUsecase = DataUsecase(repository: dataRepository);
+  dataUsecase.dispose();
+
+  // Output:
+  /*
+    [log] LocalDataSource Disposed
+    [log] RemoteDataSource Disposed
+    [log] DataRepository Disposed
+    [log] DataUsecase Disposed
+  */
+
+  runApp(const MyApp());
 }
 
-class ExampleModule {
-  static ExamplePage build() {
-    final dataSource = ExampleDataSource();
-    final dataRepository = ExampleDataRepository(dataSource);
-    final domainRepository = ExampleDomainRepository(dataRepository);
-    final usecase = ExampleUsecase(domainRepository);
-    final viewModel =
-        ExampleViewModel(usecase); // Can be replaced to a bloc/cubit
+class LocalDataSource with Disposable {
+  final streamController = StreamController.broadcast();
 
-    return ExamplePage(
-        viewModel: viewModel,
-        willDispose: () {
-          viewModel.dispose();
-        });
+  @override
+  void dispose() {
+    streamController.close();
+    super.dispose();
   }
+}
+
+class RemoteDataSource with Disposable {
+  final streamController = StreamController.broadcast();
+
+  @override
+  void dispose() {
+    streamController.close();
+    super.dispose();
+  }
+}
+
+class DataRepository with Disposable {
+  DataRepository({
+    required this.localDataSource,
+    required this.remoteDataSource,
+  });
+
+  @override
+  List<Disposable> get disposables => [
+        localDataSource,
+        remoteDataSource,
+      ];
+
+  final LocalDataSource localDataSource;
+  final RemoteDataSource remoteDataSource;
+}
+
+class DataUsecase with Disposable {
+  DataUsecase({
+    required this.repository,
+  });
+
+  @override
+  List<Disposable> get disposables => [
+        repository,
+      ];
+
+  final DataRepository repository;
 }
