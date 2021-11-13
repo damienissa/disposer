@@ -1,11 +1,4 @@
-import 'dart:async';
-import 'dart:developer';
-
-import 'package:example/features/example/data/models/example_data_model.dart';
 import 'package:flutter/material.dart';
-
-import 'features/app.dart';
-import 'package:disposer/disposer.dart';
 
 import 'features/example/data/datasources/example_data_source.dart';
 import 'features/example/data/repositories/example_data_repository.dart';
