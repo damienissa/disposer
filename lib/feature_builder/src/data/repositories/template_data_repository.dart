@@ -1,4 +1,4 @@
-final dataRepositoryTemplateFile = r'''
+const dataRepositoryTemplateFile = r'''
 import 'package:disposer/disposer.dart';
 import '../models/template_data_model.dart';
 import '../datasources/template_data_source.dart';

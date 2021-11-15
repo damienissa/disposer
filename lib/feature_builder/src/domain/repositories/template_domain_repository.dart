@@ -1,4 +1,4 @@
-final domainRepositoryTemplateFile = r'''
+const domainRepositoryTemplateFile = r'''
 import 'package:disposer/disposer.dart';
 import '../../data/repositories/template_data_repository.dart';
 import '../entities/template_entitie.dart';

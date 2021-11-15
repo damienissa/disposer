@@ -1,4 +1,4 @@
-final presentationWidgetTemplateFile = r'''
+const presentationWidgetTemplateFile = r'''
 import 'package:flutter/material.dart';
 
 import '../../domain/entities/template_entitie.dart';

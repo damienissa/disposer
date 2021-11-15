@@ -1,4 +1,4 @@
-final domainUsecaseTemplateFile = r'''
+const domainUsecaseTemplateFile = r'''
 import 'package:disposer/disposer.dart';
 import '../entities/template_entitie.dart';
 import '../repositories/template_domain_repository.dart';

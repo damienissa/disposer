@@ -1,4 +1,4 @@
-final presentationViewModelTemplateFile = r'''
+const presentationViewModelTemplateFile = r'''
 import 'package:disposer/disposer.dart';
 import 'package:flutter/material.dart';
 

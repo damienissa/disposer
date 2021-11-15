@@ -1,12 +1,14 @@
+import 'dart:io';
+
 /// FeatureBuilderHelper this is a helper extension to apply `Module Name` to path and data
-extension FeatureBuilderHelper on String {
+extension FeatureBuilderStringHelper on String {
   /// Apply `moduleName` to a data
-  String dataWith(String moduleName) => replaceAll(
+  String _dataWith(String moduleName) => replaceAll(
           'Template', moduleName[0].toUpperCase() + moduleName.substring(1))
       .replaceAll('template', _camelCaseToUpperUnderscore(moduleName));
 
   /// Apply `moduleName` to a path
-  String pathWith(String moduleName, {String? rootPath}) => replaceAll(
+  String _pathWith(String moduleName, {String? rootPath}) => replaceAll(
           'template', _camelCaseToUpperUnderscore(moduleName))
       .replaceAll('src/',
           '${rootPath ?? 'lib/features'}/${_camelCaseToUpperUnderscore(moduleName)}/');
@@ -29,5 +31,18 @@ extension FeatureBuilderHelper on String {
 
   bool _isUpperCase(String s) {
     return s == s.toUpperCase();
+  }
+}
+
+extension FeatureBuilderMapHelper on Map<String, String> {
+  Map<String, String> apply({required String name, String? path}) {
+    return map((key, value) =>
+        MapEntry(key._pathWith(name, rootPath: path), value._dataWith(name)));
+  }
+
+  void generate() {
+    forEach((key, value) => File(key)
+      ..createSync(recursive: true)
+      ..writeAsStringSync(value));
   }
 }

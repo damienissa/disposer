@@ -1,4 +1,4 @@
-final domainEntitieTemplateFile = r'''
+const domainEntitieTemplateFile = r'''
 import '../../data/models/template_data_model.dart';
 
 class TemplateEntitie {

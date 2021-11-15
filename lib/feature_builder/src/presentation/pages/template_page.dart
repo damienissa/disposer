@@ -1,4 +1,4 @@
-final presentationPageTemplateFile = r'''
+const presentationPageTemplateFile = r'''
 import 'package:flutter/material.dart';
 
 import '../view_models/template_view_model.dart';

@@ -1,4 +1,4 @@
-final datasourceTemplateFile = r'''
+const datasourceTemplateFile = r'''
 import 'dart:async';
 import 'dart:developer';
 

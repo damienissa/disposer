@@ -1,4 +1,4 @@
-final moduleTemplateFile = r'''
+const moduleTemplateFile = r'''
 import 'data/datasources/template_data_source.dart';
 import 'data/repositories/template_data_repository.dart';
 import 'domain/repositories/template_domain_repository.dart';
