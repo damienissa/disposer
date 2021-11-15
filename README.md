@@ -105,3 +105,24 @@ class DataUsecase with Disposable {
 }
 
 ```
+### Feature generator
+Example:
+    ``` dart
+        flutter pub run disposer --name NewFeature --output lib/src/features
+    ```
+You can use this naping types:
+    ``` dart
+        -n example
+        --name example
+        -n Example
+        --name Example
+        -n ExampleFeature
+        --name ExampleFeature
+    ```
+Output parameter is optional. Default path is: `lib/features`.
+Example:
+    ``` dart
+        -o lib/src/features
+        --output lib/src/features
+    ```
+    
