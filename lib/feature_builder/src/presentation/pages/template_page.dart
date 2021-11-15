@@ -4,15 +4,33 @@ import 'package:flutter/material.dart';
 import '../view_models/template_view_model.dart';
 import '../widgets/template_widget.dart';
 
-class TemplatePage extends StatelessWidget {
+
+class TemplatePage extends StatefulWidget {
   final TemplateViewModel viewModel;
-  final Function() willDispose;
   TemplatePage({
     Key? key,
     required this.viewModel,
-    required this.willDispose,
   }) : super(key: key) {
     viewModel.fetch();
+  }
+
+  @override
+  State<TemplatePage> createState() => _TemplatePageState();
+}
+
+class _TemplatePageState extends State<TemplatePage> {
+  @override
+  void initState() {
+    super.initState();
+    widget.viewModel.addListener(() {
+      if (mounted) setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    widget.viewModel.dispose();
+    super.dispose();
   }
 
   @override
@@ -21,22 +39,13 @@ class TemplatePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Template'),
       ),
-      body: WillPopScope(
-        onWillPop: () async {
-          willDispose();
-          return true;
-        },
-        child: AnimatedBuilder(
-            animation: viewModel,
-            builder: (BuildContext context, _) {
-              return viewModel.entitie == null
-                  ? Container()
-                  : TemplateWidget(
-                      entitie: viewModel.entitie!,
-                    );
-            }),
-      ),
+      body: widget.viewModel.entitie == null
+          ? Container()
+          : TemplateWidget(
+              entitie: widget.viewModel.entitie!,
+            ),
     );
   }
 }
+
 ''';
