@@ -4,7 +4,7 @@
 ## 0.0.3 
 
 * Updated feature builder. 
-    Now you can use this naping types:
+    Now you can use this naьing types:
     ``` dart
         -n example
         --name example
