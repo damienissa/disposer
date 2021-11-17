@@ -16,7 +16,7 @@ extension FeatureBuilderStringHelper on String {
   String _camelCaseToUpperUnderscore(String s) {
     var sb = StringBuffer();
     var first = true;
-    s.runes.forEach((int rune) {
+    for (int rune in s.runes) {
       var char = String.fromCharCode(rune);
       if (_isUpperCase(char) && !first) {
         sb.write('_');
@@ -25,7 +25,7 @@ extension FeatureBuilderStringHelper on String {
         first = false;
         sb.write(char.toUpperCase());
       }
-    });
+    }
     return sb.toString().toLowerCase();
   }
 
@@ -34,15 +34,20 @@ extension FeatureBuilderStringHelper on String {
   }
 }
 
+/// FeatureBuilderMapHelper
 extension FeatureBuilderMapHelper on Map<String, String> {
+  /// Apply method uses [name] and [path] to update template data with it
   Map<String, String> apply({required String name, String? path}) {
     return map((key, value) =>
         MapEntry(key._pathWith(name, rootPath: path), value._dataWith(name)));
   }
 
+  /// Generate generating files
   void generate() {
-    forEach((key, value) => File(key)
-      ..createSync(recursive: true)
-      ..writeAsStringSync(value));
+    forEach(
+      (key, value) => File(key)
+        ..createSync(recursive: true)
+        ..writeAsStringSync(value),
+    );
   }
 }

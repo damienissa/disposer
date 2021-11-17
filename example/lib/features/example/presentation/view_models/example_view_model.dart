@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 
 import '../../domain/entities/example_entitie.dart';
 import '../../domain/usecases/example_usecase.dart';
+import 'example_view_state.dart';
 
 class ExampleViewModel with ChangeNotifier, Disposable, StreamListenable {
   ExampleViewModel(this.usecase) {
     usecase.dataFeed().listen((event) {
-      entitie = ExampleEntitie(event.toStringAsFixed(2));
+      state =
+          ExampleViewState(entitie: ExampleEntitie(event.toStringAsFixed(2)));
       notifyListeners();
     }).canceledBy(this);
   }
@@ -16,10 +18,10 @@ class ExampleViewModel with ChangeNotifier, Disposable, StreamListenable {
   List<Disposable> get disposables => [usecase];
 
   final ExampleUsecase usecase;
-  ExampleEntitie? entitie;
+  ExampleViewState state = ExampleViewState();
 
   void fetch() async {
-    entitie = await usecase.fetchEntitie();
+    state = ExampleViewState(entitie: await usecase.fetchEntitie());
     notifyListeners();
   }
 

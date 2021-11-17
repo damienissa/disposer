@@ -1,3 +1,4 @@
+/// Widget template
 const presentationWidgetTemplateFile = r'''
 import 'package:flutter/material.dart';
 

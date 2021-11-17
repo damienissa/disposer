@@ -1,3 +1,5 @@
+## 0.0.7
+* Updated Featrue Generator
 ## 0.0.6
 * Updated README.md
 ## 0.0.5

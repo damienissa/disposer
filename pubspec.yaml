@@ -1,6 +1,6 @@
 name: disposer
 description: It's a simple interface to manage all instances that needs to been disposed. Pagacke can generate feature module with `Disposable`
-version: 0.0.6
+version: 0.0.7
 homepage: null
 repository: https://github.com/damienissa/disposer
 

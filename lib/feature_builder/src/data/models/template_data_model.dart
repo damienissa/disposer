@@ -1,3 +1,4 @@
+/// DataModel template
 const dataModelTemplateFile = r'''
 class TemplateDataModel {
   TemplateDataModel();

@@ -3,6 +3,8 @@ import 'dart:developer';
 
 import 'package:disposer/disposer.dart';
 
+import '../models/example_data_model.dart';
+
 class ExampleDataSource with Disposable {
   ExampleDataSource() {
     _timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
@@ -14,8 +16,8 @@ class ExampleDataSource with Disposable {
   late Timer _timer;
   final StreamController<int> _streamController = StreamController();
 
-  Future<dynamic> fetchData() {
-    return Future.value();
+  Future<ExampleDataModel> fetchData() async {
+    return ExampleDataModel.from(await Future.value());
   }
 
   Stream<int> dataFeed() => _streamController.stream;

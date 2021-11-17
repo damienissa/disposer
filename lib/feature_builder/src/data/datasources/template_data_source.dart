@@ -1,8 +1,11 @@
+/// DataSource template
 const datasourceTemplateFile = r'''
 import 'dart:async';
 import 'dart:developer';
 
 import 'package:disposer/disposer.dart';
+
+import '../models/template_data_model.dart';
 
 class TemplateDataSource with Disposable {
   TemplateDataSource() {
@@ -15,8 +18,8 @@ class TemplateDataSource with Disposable {
   late Timer _timer;
   final StreamController<int> _streamController = StreamController();
 
-  Future<dynamic> fetchData() {
-    return Future.value();
+  Future<TemplateDataModel> fetchData() async {
+    return TemplateDataModel.from(await Future.value());
   }
 
   Stream<int> dataFeed() => _streamController.stream;

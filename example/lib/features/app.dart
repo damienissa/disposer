@@ -1,4 +1,4 @@
-import 'package:example/features/example/example_module.dart';
+import 'package:example/features/example/example_builder.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
@@ -92,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context)
-              .push(MaterialPageRoute(builder: (c) => ExampleModule.build()));
+              .push(MaterialPageRoute(builder: (c) => ExampleBuilder.build()));
         },
         tooltip: 'Increment',
         child: const Icon(Icons.add),

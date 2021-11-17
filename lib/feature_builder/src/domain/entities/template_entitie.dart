@@ -1,3 +1,4 @@
+/// Entitie template
 const domainEntitieTemplateFile = r'''
 import '../../data/models/template_data_model.dart';
 

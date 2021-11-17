@@ -1,15 +1,10 @@
 import 'dart:async';
+import 'dart:developer';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:disposer/disposer.dart';
 
-class Example with Disposable {
-  @override
-  void dispose() {
-    super.dispose();
-    print('disposed');
-  }
-}
+class Example with Disposable {}
 
 class Example2 with StreamListenable {
   Example2() {
@@ -19,7 +14,7 @@ class Example2 with StreamListenable {
     });
 
     controller.stream.listen((event) {
-      print(event);
+      log(event);
       controller.close();
     }).canceledBy(this);
   }

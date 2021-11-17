@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:args/args.dart';
 import 'package:disposer/feature_builder/feature_builder.dart';
 
+/// The future generator entry point
 void main(List<String> arguments) {
   var argParser = ArgParser();
   argParser.addOption('name', abbr: 'n');
@@ -11,6 +14,6 @@ void main(List<String> arguments) {
     FeatureBuilder.build(
         moduleName: results['name'], rootPath: results['output']);
   } else {
-    print('dart pub global run feature_builder --name ModuleName');
+    log('dart pub global run feature_builder --name ModuleName');
   }
 }

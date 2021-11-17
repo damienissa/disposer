@@ -105,10 +105,36 @@ class DataUsecase with Disposable {
 }
 
 ```
-### Feature generator
-Example:
+## Feature generator
+### Future generator creates new clean architecture feature:
+![](images/flutter_clean_arch.png)
+### Folders structure:
+![](images/folders_structure.png)
+
+## Start working with future generator
+### First approach
+Activate the global pub package. With this approach, you can use features generator globally
+
+Activate:
+  ```console
+    dart pub global activate disposer
+  ```
+
+Usage:
+  ```console
+    disposer --name NewFeature --output lib/src/features
+  ```
+
+### Second approach
+Add disposer like dependency to your project
+```yaml
+  dependencies:
+    disposer: ^0.0.7
+```
+
+Usage:
 ```console
-    foo@bar:~$ flutter pub run disposer --name NewFeature --output lib/src/features
+  flutter pub run disposer --name NewFeature --output lib/src/features
 ```
     
 Feature naming convention:

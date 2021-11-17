@@ -1,14 +1,17 @@
+/// ViewModel template
 const presentationViewModelTemplateFile = r'''
 import 'package:disposer/disposer.dart';
 import 'package:flutter/material.dart';
 
 import '../../domain/entities/template_entitie.dart';
 import '../../domain/usecases/template_usecase.dart';
+import 'template_view_state.dart';
 
 class TemplateViewModel with ChangeNotifier, Disposable, StreamListenable {
   TemplateViewModel(this.usecase) {
     usecase.dataFeed().listen((event) {
-      entitie = TemplateEntitie(event.toStringAsFixed(2));
+      state =
+          TemplateViewState(entitie: TemplateEntitie(event.toStringAsFixed(2)));
       notifyListeners();
     }).canceledBy(this);
   }
@@ -17,10 +20,10 @@ class TemplateViewModel with ChangeNotifier, Disposable, StreamListenable {
   List<Disposable> get disposables => [usecase];
 
   final TemplateUsecase usecase;
-  TemplateEntitie? entitie;
+  TemplateViewState state = TemplateViewState();
 
   void fetch() async {
-    entitie = await usecase.fetchEntitie();
+    state = TemplateViewState(entitie: await usecase.fetchEntitie());
     notifyListeners();
   }
 

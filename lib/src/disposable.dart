@@ -49,9 +49,9 @@ mixin Disposable {
   @mustCallSuper
   void dispose() {
     assert(!_disposed, 'You try to dispose the instance that was disposed');
-    disposables.forEach((element) {
+    for (Disposable element in disposables) {
       element.dispose();
-    });
+    }
     _disposed = true;
     onDispose();
   }
@@ -68,6 +68,6 @@ mixin Disposable {
   ///
   @mustCallSuper
   void onDispose() {
-    log(this.runtimeType.toString() + ' Disposed');
+    log(runtimeType.toString() + ' Disposed');
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../view_models/example_view_state.dart';
 import '../view_models/example_view_model.dart';
 import '../widgets/example_widget.dart';
-
 
 class ExamplePage extends StatefulWidget {
   final ExampleViewModel viewModel;
@@ -32,18 +32,19 @@ class _ExamplePageState extends State<ExamplePage> {
     super.dispose();
   }
 
+  ExampleViewState get state => widget.viewModel.state;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Example'),
       ),
-      body: widget.viewModel.entitie == null
+      body: state.entitie == null
           ? Container()
           : ExampleWidget(
-              entitie: widget.viewModel.entitie!,
+              entitie: state.entitie!,
             ),
     );
   }
 }
-
