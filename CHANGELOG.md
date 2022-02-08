@@ -1,3 +1,5 @@
+## 0.0.8
+* Updated Featrue Generator
 ## 0.0.7
 * Updated Featrue Generator
 ## 0.0.6
