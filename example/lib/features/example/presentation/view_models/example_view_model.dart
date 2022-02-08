@@ -1,12 +1,13 @@
 import 'package:disposer/disposer.dart';
-import 'package:flutter/material.dart';
 
 import '../../domain/entities/example_entitie.dart';
-import '../../domain/usecases/example_usecase.dart';
+import '../../domain/usecases/example_usecase_interface.dart';
+import '../routing/example_router_interface.dart';
 import 'example_view_state.dart';
+import 'example_view_model_interface.dart';
 
-class ExampleViewModel with ChangeNotifier, Disposable, StreamListenable {
-  ExampleViewModel(this.usecase) {
+class ExampleViewModel extends IExampleViewModel {
+  ExampleViewModel({required this.usecase, required this.router}) {
     usecase.dataFeed().listen((event) {
       state =
           ExampleViewState(entitie: ExampleEntitie(event.toStringAsFixed(2)));
@@ -14,20 +15,16 @@ class ExampleViewModel with ChangeNotifier, Disposable, StreamListenable {
     }).canceledBy(this);
   }
 
-  @override
-  List<Disposable> get disposables => [usecase];
+  final IExampleRouter router;
 
-  final ExampleUsecase usecase;
+  @override
+  final IExampleUsecase usecase;
+  @override
   ExampleViewState state = ExampleViewState();
 
+  @override
   void fetch() async {
     state = ExampleViewState(entitie: await usecase.fetchEntitie());
     notifyListeners();
-  }
-
-  @override
-  void dispose() {
-    unsubscribe();
-    super.dispose();
   }
 }

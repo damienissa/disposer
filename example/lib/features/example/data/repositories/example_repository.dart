@@ -1,9 +1,12 @@
 import '../../domain/entities/example_entitie.dart';
 import '../../domain/repositories/example_repository.dart';
-import '../datasources/example_data_source.dart';
+import '../datasources/example_data_source_interface.dart';
 
 class ExampleRepository extends IExampleRepository {
-  ExampleRepository(ExampleDataSource dataSource) : super(dataSource);
+  ExampleRepository(this.dataSource);
+
+  @override
+  final IExampleDataSource dataSource;
 
   @override
   Stream<double> dataFeed() =>

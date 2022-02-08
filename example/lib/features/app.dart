@@ -91,8 +91,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (c) => ExampleBuilder.build()));
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (c) => ExampleBuilder.build(Navigator.of(context))));
         },
         tooltip: 'Increment',
         child: const Icon(Icons.add),

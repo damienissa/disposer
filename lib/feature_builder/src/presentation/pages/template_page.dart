@@ -3,11 +3,11 @@ const presentationPageTemplateFile = r'''
 import 'package:flutter/material.dart';
 
 import '../view_models/template_view_state.dart';
-import '../view_models/template_view_model.dart';
+import '../view_models/template_view_model_interface.dart';
 import '../widgets/template_widget.dart';
 
 class TemplatePage extends StatefulWidget {
-  final TemplateViewModel viewModel;
+  final ITemplateViewModel viewModel;
   TemplatePage({
     Key? key,
     required this.viewModel,

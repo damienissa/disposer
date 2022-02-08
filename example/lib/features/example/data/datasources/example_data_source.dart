@@ -1,11 +1,10 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:disposer/disposer.dart';
-
 import '../models/example_data_model.dart';
+import 'example_data_source_interface.dart';
 
-class ExampleDataSource with Disposable {
+class ExampleDataSource extends IExampleDataSource {
   ExampleDataSource() {
     _timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
       log(timer.tick.toString());
@@ -16,10 +15,12 @@ class ExampleDataSource with Disposable {
   late Timer _timer;
   final StreamController<int> _streamController = StreamController();
 
+  @override
   Future<ExampleDataModel> fetchData() async {
     return ExampleDataModel.from(await Future.value());
   }
 
+  @override
   Stream<int> dataFeed() => _streamController.stream;
 
   @override

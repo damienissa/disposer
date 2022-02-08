@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../view_models/example_view_state.dart';
-import '../view_models/example_view_model.dart';
+import '../view_models/example_view_model_interface.dart';
 import '../widgets/example_widget.dart';
 
 class ExamplePage extends StatefulWidget {
-  final ExampleViewModel viewModel;
+  final IExampleViewModel viewModel;
   ExamplePage({
     Key? key,
     required this.viewModel,
